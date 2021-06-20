@@ -20,15 +20,11 @@ function App() {
   };
 
 
-  
-
-
-
-
   useEffect(() => {
 
     setLoad(true);
     getToken();
+    
     
   }, []);
 
@@ -43,8 +39,10 @@ function App() {
     });
 
     
-    getItems(token , 'RJ249095171TH')
+   
     setTokenAPI(token)
+    setLoad(false)
+    
 
   }
 
@@ -81,22 +79,21 @@ function App() {
   }
 
 
-  const reload = (product) => () =>{
+  const Tracking = (product) => () =>{
     setLoad(true)
     getItems(tokenAPI , product)
   }
 
 
   return (
-    <div className="App" style={{display:"flex",justifyContent:"center",alignItems:"center", width:"100%" ,height:"100vh" , flexDirection:"column"}}>
-      <div style={{backgroundColor:"#5999ff",width:"100%" ,display:'flex' , justifyContent:"center", alignItems:"center" , padding:"2rem" , border:"3px solid black" , borderRadius:"2rem"}}>
+    <div className="App" style={{display:"flex",justifyContent:"center",alignItems:"center", width:"100%" ,height:"100vh" , flexDirection:"column" , backgroundColor:'#c9d0ff'}}>
+      <div style={{display:'flex' , justifyContent:'space-evenly' , width:'100%' , height:'50%' , backgroundColor:'#a0a8d9' , marginBottom:'2rem'}}>
         {load ? 'LOAD' : text.map((data , idx)=>{
-              return <div key={idx}><List location={data.location} status={data.status_description} date={data.status_date} recieve={data.receiver_name}/></div>
+              return <div style={{display:'flex' , justifyContent:'center' , alignItems:'center'}}key={idx}><List location={data.location} status={data.status_description} date={data.status_date} recieve={data.receiver_name}/></div>
             })}
       </div>
-      <input type="text" value={ems} onChange={(e)=>setEMS(e.target.value)}/>
-      <button onClick={reload(ems)}>Track</button>
-        
+      <input type="text" value={ems} placeholder="ป้อนเลขพัสดุ" onChange={(e)=>setEMS(e.target.value)} style={{width:'300px' , textAlign:'center' , fontSize:'20px' , marginBottom:'2rem' , borderRadius:'3rem' , outline:'none' , padding:'0.5rem 0rem' , border:'0 none'}}/>
+      <button className="Button" onClick={Tracking(ems)}>เช็คสถานะ</button>
     </div>
   );
 }
