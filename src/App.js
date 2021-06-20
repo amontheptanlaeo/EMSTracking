@@ -14,7 +14,7 @@ function App() {
     method: 'POST',
     url: 'https://trackapi.thailandpost.co.th/post/api/v1/authenticate/token',
     headers: {
-      'Authorization': 'Token IrPpAhL@AhLdWBPaMBEOG7BTH^RQEVJtFqYzVeL#CoEKOiZAPxTbOLNzR^NVB9L$E^BlBwM;ZWT!R_VGLYZmUbBFH;GdZ-ILRbBa',
+      'Authorization': 'Token <Your-Token>',
       'Content-Type': 'application/json'
     }
   };
